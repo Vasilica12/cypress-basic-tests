@@ -13,13 +13,10 @@ describe('💡 Example Cypress Tests with Dropdown Fixed', () => {
 
 
   it('✅ Should open "Commands > Querying" via dropdown click', () => {
-    // Click the "Commands" dropdown button
     cy.contains('Commands').click();
 
-    // Now the submenu is visible, click "Querying"
     cy.contains('Querying').click();
 
-    // Assert URL and heading
     cy.url().should('include', '/commands/querying');
     cy.get('.container h1').should('contain.text', 'Querying');
   });
