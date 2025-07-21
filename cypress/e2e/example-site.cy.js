@@ -7,7 +7,7 @@ describe('💡 Example Cypress Tests with Dropdown Fixed', () => {
     cy.contains('Kitchen Sink').should('be.visible');
   });
 
-  it('✅ should display the correct main heading', () => {
+  it('✅ should display the correct main heading test', () => {
     cy.get('h1').should('be.visible').and('contain.text', 'Kitchen Sink')
   })
 
