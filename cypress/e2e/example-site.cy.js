@@ -21,7 +21,7 @@ describe('💡 Example Cypress Tests with Dropdown Fixed', () => {
     cy.get('.container h1').should('contain.text', 'Querying');
   });
 
-  it('✅ Should open "Actions" page and type in email field', () => {
+  it('✅ Should open "Actions" page and type in email field test@example.com', () => {
     cy.contains('Commands').click();
     cy.contains('Actions').click();
 
