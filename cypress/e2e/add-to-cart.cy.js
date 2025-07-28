@@ -1,18 +1,22 @@
+import AddToCartPage from '../support/pages/AddToCart';
+
 describe('Adăugare produs în coș', () => {
+  const addToCardPage = new AddToCartPage();
+  const email = Cypress.env('USERNAME');
+  const password = Cypress.env('PASSWORD');
+
   beforeEach(() => {
-    cy.visit('http://www.automationpractice.pl');
+    cy.login(email, password);
   });
 
-  it('✅ Adaugă un produs în coș cu succes', () => {
-    cy.get('.product-container').first().trigger('mouseover');
-    cy.get('.ajax_add_to_cart_button').first().click();
-    cy.get('.layer_cart_product h2').should('contain', 'Product successfully added');
-  });
+  it.only('Should navigate and add product to cart', () => {
+    const productName = 'Breathe-Easy Tank';
 
-  it('❌ Încearcă să adauge fără a alege un produs (simulare)', () => {
-    // Simulare negativă: forțăm click pe buton fără produs vizibil
-    cy.get('.ajax_add_to_cart_button').first().invoke('hide');
-    cy.get('.ajax_add_to_cart_button').first().click({ force: true });
-    cy.get('.layer_cart_product h2').should('not.exist');
+    addToCardPage.navigateToTopsSection();
+    addToCardPage.selectProduct(productName);
+    addToCardPage.selectRandomSize();
+    cy.selectRandomColor();
+    addToCardPage.clickAddToCart();
+    addToCardPage.verifySuccessMessage(productName);
   });
 });
