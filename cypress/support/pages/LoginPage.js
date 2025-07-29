@@ -19,8 +19,8 @@ class LoginPage {
     cy.get(this.submitButton).should('be.visible');
   }
 
-  fillEmail(value) {
-    cy.get(this.emailInput).clear().type(value);
+  fillEmail(email) {
+    cy.get(this.emailInput).clear().type(email);
   }
 
   fillPassword(value) {

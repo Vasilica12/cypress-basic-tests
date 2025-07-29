@@ -1,9 +1,25 @@
-describe('Login Tests', () => {
+import LoginPage from "../support/pages/LoginPage";
 
+describe('Login Tests', () => {
+  const loginPage = new LoginPage();
 
   beforeEach(() => {
     cy.visit('https://magento.softwaretestingboard.com');
   });
+
+  it("Verify that user can log in successfully", () => {
+    cy.visit('https://magento.softwaretestingboard.com/');
+    cy.get('.authorization-link a').contains("Sign In").should("be.visible").click();
+    cy.get('#email').type("vasilica.cernovschi1234@gmail.com");
+    cy.get('#pass').type("tR23.xn6jwr@.nC");
+    cy.get('#send2').click();
+    cy.get('span.logged-in').should("be.visible").and('contain.text', 'Welcome');
+  })
+
+  it.only("Verify that user can log in successfully", () => {
+    loginPage.visitLoginPage();
+    loginPage.fillEmail("vasilica.cernovschi1234@gmail.com");
+  })
 
   context('Valid credentials', () => {
     it('Access the Login Page.', () => {
