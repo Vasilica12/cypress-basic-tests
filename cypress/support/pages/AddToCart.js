@@ -1,5 +1,4 @@
 class AddToCartPage {
-  // Element selectors
   womenMenu = 'a.level-top:contains("Women")';
   topsLink = 'ol.items li.item a:contains("Tops")';
   productItem = '.product-item-info';
@@ -7,8 +6,7 @@ class AddToCartPage {
   colorOptions = '.swatch-attribute.color .swatch-option.color';
   addToCartButton = '#product-addtocart-button';
   successMessage = '.message-success';
-
-  // Actions
+  
   navigateToTopsSection() {
     cy.get(this.womenMenu).trigger('mouseover').click();
     cy.get(this.topsLink).should('be.visible').click();

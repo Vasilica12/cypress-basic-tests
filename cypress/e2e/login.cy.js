@@ -16,11 +16,6 @@ describe('Login Tests', () => {
     cy.get('span.logged-in').should("be.visible").and('contain.text', 'Welcome');
   })
 
-  it.only("Verify that user can log in successfully", () => {
-    loginPage.visitLoginPage();
-    loginPage.fillEmail("vasilica.cernovschi1234@gmail.com");
-  })
-
   context('Valid credentials', () => {
     it('Access the Login Page.', () => {
       cy.get('li.authorization-link a').contains('Sign In').should('be.visible').click();
